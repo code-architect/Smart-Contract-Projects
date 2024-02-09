@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@remix-project/remixd": "^0.6.24",
+    "kill-port": "^2.0.1"
+  }
+}
