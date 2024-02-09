@@ -9,7 +9,7 @@ contract SimpleTask
         string city;
     }
 
-    Person[] internal people;
+    Person[] public people;
 
     function addPeople(uint _age, string memory _name, string memory _city) public
     {
