@@ -4,3 +4,4 @@ node_modules
 .idea
 contracts/artifacts
 my_venv
+.env
