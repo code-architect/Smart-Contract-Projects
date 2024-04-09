@@ -37,6 +37,8 @@ abi = compile_sole["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
 #  connecting to ganache
 w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
+# w3 = Web3(Web3.HTTPProvider("https://goerli.infura.io/v3/6732758e928f439bad23a8f3327f5002"))
+# chain_id = 4
 chain_id = 1337
 my_address = os.getenv("MY_ADDRESS")
 
