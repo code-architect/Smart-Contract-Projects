@@ -14,3 +14,4 @@
 13. To use brownie console use `brownie console`
 14. Pull monks from chainlink mix `https://github.com/smartcontractkit/chainlink-mix/tree/main/contracts/test`
 15. To add a new network `brownie networks add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=1337`
+16. Added a testing mainnet fork, using Alchemy cause I like it: `brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork='https://eth-mainnet.g.alchemy.com/v2/<yourkey from api>' accounts=10 mnemonic=brownie port=8545` add this line to brownie cli nd modify your yaml file 

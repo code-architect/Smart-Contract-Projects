@@ -19,6 +19,7 @@ def deploy_fund_me():
 
     fund_me = FundMe.deploy(price_feed_address, {"from": account},
                             publish_source=config["networks"][network.show_active()].get("verify"))
+    return fund_me
 
 
 def main():

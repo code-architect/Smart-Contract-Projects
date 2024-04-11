@@ -1,22 +1,25 @@
-from brownie import FundMe, network, config,MockV3Aggregator
+from brownie import FundMe, network, config,MockV3Aggregator, accounts, exceptions
 from scripts.helpful import get_accounts, deploy_mocks, LOCAL_BLOCKCHAIN_ENVIRONMENT
+import pytest
+from scripts.deploy import deploy_fund_me
 
 
 def test_can_fund_and_withdraw():
     account = get_accounts()
-    if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENT:
-        price_feed_address = config["networks"][network.show_active()]["eth_usd_price_feed"]
-    else:
-        deploy_mocks(account)
-        print(MockV3Aggregator[-1].address)
-        price_feed_address = MockV3Aggregator[-1].address
-
-    fund_me = FundMe.deploy(price_feed_address, {"from": account},
-                            publish_source=config["networks"][network.show_active()].get("verify"))
-    entrance_fee = fund_me.getEntranceFee()
+    fund_me = deploy_fund_me()
+    entrance_fee = fund_me.getEntranceFee() + 100
     tx = fund_me.fund({"from": account, "value": entrance_fee})
     tx.wait(1)
     assert fund_me.addressToAmountFunded(account.address) == entrance_fee
     tx2 = fund_me.withdraw({"from": account})
     tx2.wait(1)
     assert fund_me.addressToAmountFunded(account.address) == 0
+
+
+def test_only_owner_can_withdraw():
+    if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENT:
+        pytest.skip("only for local network")
+    fund_me = deploy_fund_me()
+    bad_actor = accounts.add()
+    with pytest.raises(exceptions.VirtualMachineError):
+        fund_me.withdraw({"from": bad_actor})
