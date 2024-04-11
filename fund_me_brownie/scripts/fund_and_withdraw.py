@@ -10,5 +10,12 @@ def fund():
     fun_me.fund({"from": account, "value": entrance_fee})
 
 
+def withdraw():
+    fun_me = FundMe[-1]
+    account = get_accounts()
+    fun_me.withdraw({"from": account})
+
+
 def main():
     fund()
+    withdraw()
