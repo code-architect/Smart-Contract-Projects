@@ -12,8 +12,9 @@
 6. create the `deply.py` file
 7. create the `helper.py` file
 8. add the `get_accounts` function to get the accounts
-9. declare `contract_to_mock`
-10 
+9. declare `contract_to_mock` which is defined in the yanl file
+10 create `get_contract` function in `helper` which we will call from `deploy`
+11. create `deploy_mocks` function to deply the mocks which is being called from `get_contract` fucntion
 
 ### Testing Options
 1. `mainnet-fork`

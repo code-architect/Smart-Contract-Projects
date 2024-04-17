@@ -9,6 +9,9 @@ compiler:
 networks:
 
   default: development
+  sepolia:
+    vrf_coordinator: '0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625'
+    eth_usd_price: '0x694AA1769357215DE4FAC081bf1f309aDC325306'
   
   mainnet-fork:
     eth_usd_price_feed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
