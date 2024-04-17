@@ -9,6 +9,11 @@
 3. add to `networks` in `brownie-config.yaml` file
 4. add `mainnet-for` as `brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork="https://eth-mainnet.g.alchemy.com/v2/$ALCHEMY_PROJECT_ID" accounts=10 mnemonic=brownie port=8545`
 5. run `brownie test -s --network mainnet-fork -W ignore` to test
+6. create the `deply.py` file
+7. create the `helper.py` file
+8. add the `get_accounts` function to get the accounts
+9. declare `contract_to_mock`
+10 
 
 ### Testing Options
 1. `mainnet-fork`
