@@ -1,5 +1,5 @@
 from brownie import Lottery, network, config
-from scripts.helper import get_accounts,get_contract,fund_with_link
+from scripts.helper import get_accounts, get_contract, fund_with_link
 import time
 
 
@@ -16,7 +16,7 @@ def deploy_lottery():
         publish_source=config["networks"][network.show_active()].get("verify", False),
     )
     print("Deloyed Lottery!")
-    print(lottery)
+    return lottery
 
 
 # ====================================================== Lottery Operations Starts ================================================================

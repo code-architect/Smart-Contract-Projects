@@ -27,6 +27,7 @@ get that verify key, not not there pass false
 18. to end the lottery we need few things, one is link token to fund the contract
 19. in `helper.py` write `fund_with_link` 
 20. when we call the `endLottery` function it will make a request to a chaninlink node and the chainlink node willr esponse by calling `fulfillRandomness`, we we have to wait for it to response
+21. write unit tests for the lottery, you can test individual tests like `brownie test -s -k test_can_start_enter_unless_started -W ignore`
 
 
 
