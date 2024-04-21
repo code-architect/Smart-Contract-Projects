@@ -43,7 +43,9 @@ def get_contract(contract_name):
         contract = contract_type[-1] # this somier to saying MockV3Aggregator[-1]
     else:
         contract_address = config["networks"][network.show_active()][contract_name]
-        contract = Contract.from_abi(contract_type._name, contract_address, contract_type.abi)
+        contract = Contract.from_abi(
+            contract_type._name, contract_address, contract_type.abi
+            )
     return contract
 
 
@@ -52,4 +54,8 @@ def deploy_mocks(decimals=DECIMALS, initial_value=STARTING_PRICE):
     print("Deploying mocks")
     account = get_accounts()
     MockV3Aggregator.deploy(DECIMALS, Web3.to_wei(STARTING_PRICE, "ether"), {"from": account})
-    print("Mock deployed")
+    print("MockV3Aggregator Mock deployed\n")
+    link_token = LinkToken.deploy({"from": account})
+    print("LinkToken Mock deployed\n")
+    VRFCoordinatorMock.deploy(link_token.address, {"from": account})
+    print("VRFCoordinatorMock Mock deployed\n")

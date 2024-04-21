@@ -5,3 +5,4 @@ node_modules
 contracts/artifacts
 my_venv
 .env
+.vscode

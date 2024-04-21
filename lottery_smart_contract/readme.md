@@ -9,12 +9,22 @@
 3. add to `networks` in `brownie-config.yaml` file
 4. add `mainnet-for` as `brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork="https://eth-mainnet.g.alchemy.com/v2/$ALCHEMY_PROJECT_ID" accounts=10 mnemonic=brownie port=8545`
 5. run `brownie test -s --network mainnet-fork -W ignore` to test
-6. create the `deply.py` file
+6. create the `deploy.py` file
 7. create the `helper.py` file
 8. add the `get_accounts` function to get the accounts
-9. declare `contract_to_mock` which is defined in the yanl file
-10 create `get_contract` function in `helper` which we will call from `deploy`
+9. declare `contract_to_mock` which is defined in the yaml file
+10 create `get_contract` function in the `helper` which we will call from `deploy`
 11. create `deploy_mocks` function to deply the mocks which is being called from `get_contract` fucntion
+    a. the `get_contract` function work flow, if we are on test or development mode, it will deploy and get the latest contract
+       else, it will get the contract from the address
+12. add all the mocks to `contract_to_mock` in helper.py
+13. run `brownie compile` to check everything is all right or not
+14. add all the files into `contracts/test`
+15 in `deploy.py` add the fee and keyhash
+16. If you want tot publish this add the last bit of line `publish_source=config["networks"][network.show_active()].get("verify", False),` this says
+get that verify key, not not there pass false
+
+
 
 ### Testing Options
 1. `mainnet-fork`
