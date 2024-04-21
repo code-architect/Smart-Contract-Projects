@@ -23,6 +23,10 @@
 15 in `deploy.py` add the fee and keyhash
 16. If you want tot publish this add the last bit of line `publish_source=config["networks"][network.show_active()].get("verify", False),` this says
 get that verify key, not not there pass false
+17. in `deploy.py` write `start_lottery` function to start the lottery, this will be tratsaction so add `wait(1)`. and write the rest of the lottery functions
+18. to end the lottery we need few things, one is link token to fund the contract
+19. in `helper.py` write `fund_with_link` 
+20. when we call the `endLottery` function it will make a request to a chaninlink node and the chainlink node willr esponse by calling `fulfillRandomness`, we we have to wait for it to response
 
 
 
