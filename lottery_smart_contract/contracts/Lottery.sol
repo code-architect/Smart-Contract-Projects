@@ -19,6 +19,8 @@ contract Lottery is VRFConsumerBase, Ownable
     uint256 public fee;
     bytes32 public keyhash;
 
+    event RequestedRandomness(bytes32 requestId);
+
 
     constructor(address _priceFeedAddress, address _vrfCoordinator, address _link, uint256 _fee, bytes32 _keyhash) public VRFConsumerBase(_vrfCoordinator, _link)
     {
@@ -62,6 +64,7 @@ contract Lottery is VRFConsumerBase, Ownable
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         // this function call follows request - receive architecture
         bytes32 requestId = requestRandomness(keyhash, fee);
+        emit RequestedRandomness(requestId);
     }
 
     function fulfillRandomness(bytes32 _requestId, uint256 _randomness) internal override
